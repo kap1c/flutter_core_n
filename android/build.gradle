@@ -9,8 +9,17 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'                // stable
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.3.15'
+    }
+
+    configurations.classpath {
+        resolutionStrategy.eachDependency { d ->
+          if (d.requested.group == 'org.jetbrains.kotlin' &&
+              d.requested.name == 'kotlin-gradle-plugin') {
+            d.useVersion kotlin_version
+          }
+        }
     }
 }
 
@@ -39,5 +48,5 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.31"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
