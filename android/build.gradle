@@ -2,15 +2,15 @@ group 'com.example.flutter_core'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.5.20'
+    ext.kotlin_version = '1.5.31' // or at least '1.5.31' if you can't jump to 1.8 yet
     repositories {
         google()
-        jcenter()
+        mavenCentral()  // stop using jcenter()
     }
-
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
+        classpath 'com.android.tools.build:gradle:7.4.2'                // stable
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.15'
     }
 }
 
